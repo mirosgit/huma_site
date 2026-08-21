@@ -1,0 +1,45 @@
+{
+    "name": "tic-tac-toe-automation",
+    "version": "1.0.0",
+    "private": true,
+    "description": "WebdriverIO + Cucumber (JavaScript) E2E automation for the Tic-Tac-Toe SUT",
+    "type": "module",
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "test": "wdio run ./wdio.conf.js",
+        "test:smoke": "TAGS='@smoke and not @known-defect' wdio run ./wdio.conf.js",
+        "test:regression": "TAGS='@regression and not @known-defect' wdio run ./wdio.conf.js",
+        "test:e2e": "TAGS='@e2e and not @known-defect' wdio run ./wdio.conf.js",
+        "test:auth": "wdio run ./wdio.conf.js --suite auth",
+        "test:game": "wdio run ./wdio.conf.js --suite game",
+        "test:profile": "wdio run ./wdio.conf.js --suite profile",
+        "test:defects": "TAGS='@known-defect' wdio run ./wdio.conf.js",
+        "test:all": "TAGS='' wdio run ./wdio.conf.js",
+        "test:stage": "ENV=stage wdio run ./wdio.conf.js",
+        "test:headed": "HEADLESS=false wdio run ./wdio.conf.js",
+        "test:dry": "TAGS='' wdio run ./wdio.conf.js --cucumberOpts.dryRun",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "report": "allure generate ./reports/allure-results --clean -o ./reports/allure-report && allure open ./reports/allure-report"
+    },
+    "devDependencies": {
+        "@cucumber/cucumber": "^10.9.0",
+        "@eslint/js": "^9.39.5",
+        "@wdio/allure-reporter": "^9.31.1",
+        "@wdio/cli": "^9.31.1",
+        "@wdio/cucumber-framework": "^9.31.1",
+        "@wdio/globals": "^9.31.1",
+        "@wdio/local-runner": "^9.31.1",
+        "@wdio/spec-reporter": "^9.31.1",
+        "@wdio/static-server-service": "^9.31.1",
+        "dotenv": "^16.6.1",
+        "eslint": "^9.39.5",
+        "eslint-config-prettier": "^9.1.2",
+        "expect-webdriverio": "^6.0.5",
+        "globals": "^15.15.0",
+        "prettier": "^3.9.6",
+        "webdriverio": "^9.31.1"
+    }
+}
